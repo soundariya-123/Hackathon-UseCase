@@ -38,6 +38,7 @@ export class SlotDTO {
     * status is for find the number of the users
     * @field status
     */
+    //@IsNotEmpty({ message: 'status should not be empty' })
     status: string;
 
    /**

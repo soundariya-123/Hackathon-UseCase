@@ -3,13 +3,18 @@ import { Slots } from "./entity/slots.entity";
 
 
 /**
- * SlotsRepository Exrends Standard Repository 
+ * SlotsRepository Extends Standard Repository 
  * @author RAM
  */
 @EntityRepository(Slots)
 export class SlotsRepository extends Repository<Slots>{
 
-    searchByLocation(){
-        
+    async changeSlot(id:number,startTime: string,endTime: string){
+       return await this
+       .createQueryBuilder()
+       .update(Slots)
+       .set({startTime: startTime,endTime: endTime})
+       .where("id = :id",{id})
+       .execute()
     }
 }
